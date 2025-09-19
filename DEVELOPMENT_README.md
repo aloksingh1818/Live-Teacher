@@ -7,10 +7,10 @@ This document provides a detailed, month-by-month, phase-wise breakdown for deve
 ## Quarter 1 (Months 1–3): Foundation & MVP
 
 ### Month 1: Planning & Core Setup
-- Finalize MVP features and requirements.
-- Design system architecture (backend, frontend, database, cloud).
+- Finalize MVP features and requirements, including user authentication (signup/login).
+- Design system architecture (backend, frontend, database, cloud, authentication flow).
 - Set up GitHub repository and CI/CD pipeline.
-- Select tech stack: Flutter (frontend), FastAPI (backend), Firebase/MongoDB (database).
+- Select tech stack: Flutter (frontend), FastAPI (backend), Firebase/MongoDB (database, authentication).
 - Implement PDF text extraction (PyMuPDF/pdfminer.six).
 - Create initial project structure for backend and frontend.
 - Set up basic documentation and developer onboarding.
@@ -24,8 +24,9 @@ This document provides a detailed, month-by-month, phase-wise breakdown for deve
 - Basic error handling and user feedback.
 
 ### Month 3: Persistence & Testing
+- Implement user authentication (signup/login) and session management.
 - Implement progress save (resume from last line/page).
-- Integrate database (Firebase/MongoDB) for user progress.
+- Integrate database (Firebase/MongoDB) for user progress and authentication.
 - Test with small and large PDFs for performance and stability.
 - Conduct initial user testing and gather feedback.
 - Release MVP beta version for limited users.
@@ -118,9 +119,9 @@ Below is a sample breakdown of each month into 30 days of development activities
 
 ### Month 1: Planning & Core Setup (Days 1–30)
 **Days 1–5:**
-- Finalize MVP features and requirements
-- Research and select tech stack
-- Design system architecture (draw diagrams, define APIs)
+- Finalize MVP features and requirements (including signup/login)
+- Research and select tech stack (including authentication solution)
+- Design system architecture (draw diagrams, define APIs, auth flow)
 
 **Days 6–10:**
 - Set up GitHub repo, CI/CD pipeline
@@ -173,8 +174,9 @@ Below is a sample breakdown of each month into 30 days of development activities
 
 ### Month 3: Persistence & Testing (Days 61–90)
 **Days 61–65:**
+- Implement user authentication (signup/login)
 - Implement progress save (resume from last line/page)
-- Integrate database (Firebase/MongoDB)
+- Integrate database (Firebase/MongoDB) for user and progress data
 
 **Days 66–70:**
 - Test with small and large PDFs

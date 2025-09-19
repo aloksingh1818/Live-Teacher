@@ -8,13 +8,13 @@ This document provides a day-by-day breakdown for the entire year (Day 1 to Day 
 Day 1: Finalize MVP features and requirements
 Day 2: Research and select tech stack
 Day 3: Design system architecture (draw diagrams)
-Day 4: Define backend API endpoints
-Day 5: Define frontend component structure
+Day 4: Define backend API endpoints (including authentication)
+Day 5: Define frontend component structure (including signup/login screens)
 Day 6: Set up GitHub repository
 Day 7: Set up CI/CD pipeline
 Day 8: Create backend project structure
 Day 9: Create frontend project structure
-Day 10: Set up basic documentation
+Day 10: Set up basic documentation (including authentication flow)
 Day 11: Implement PDF text extraction (PyMuPDF/pdfminer.six)
 Day 12: Set up backend endpoints for PDF upload
 Day 13: Test PDF extraction with sample files
@@ -77,7 +77,16 @@ Day 61: Implement progress save (resume from last line/page)
 Day 62: Integrate database (Firebase/MongoDB)
 Day 63: Test progress save feature
 Day 64: Optimize database queries
-Day 65: Add user authentication (Firebase Auth)
+Day 65: Add user authentication (signup/login with Firebase Auth)
+Day 66: Build signup and login screens (frontend)
+Day 67: Implement authentication endpoints (backend)
+Day 68: Test signup/login flow end-to-end
+Day 69: Add session management and logout
+Day 70: Document authentication implementation
+Day 71: Internal review of authentication
+Day 72: Collect feedback on authentication UX
+Day 73: Bug fixing for authentication
+Day 74: Sprint review and planning (authentication included)
 Day 66: Test with small PDFs
 Day 67: Test with large PDFs
 Day 68: Optimize performance for large files

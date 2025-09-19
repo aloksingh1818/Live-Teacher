@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+.venv
+
+# Flutter/Dart
+build/
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+
+# General
+.DS_Store
+.idea/
+.vscode/
+*.log
+*.swp
+*.swo
+node_modules/
+
+# Firebase
+firebase-debug.log
+.firebase/
