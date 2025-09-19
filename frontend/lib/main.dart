@@ -1,4 +1,6 @@
+
 import 'package:flutter/material.dart';
+import 'screens/upload_pdf_screen.dart';
 
 void main() {
   runApp(const LiveTeacherApp());
@@ -14,9 +16,11 @@ class LiveTeacherApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const Scaffold(
-        body: Center(child: Text('Live-Teacher Flutter App')),
-      ),
+      initialRoute: '/upload',
+      routes: {
+        '/upload': (context) => const UploadPDFScreen(),
+        // PDFViewerScreen is navigated to via MaterialPageRoute
+      },
     );
   }
 }

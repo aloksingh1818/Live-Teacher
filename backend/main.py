@@ -25,12 +25,19 @@ async def upload_pdf(file: UploadFile = File(...)):
     temp_dir = "temp_uploads"
     os.makedirs(temp_dir, exist_ok=True)
     temp_path = os.path.join(temp_dir, file.filename)
-    with open(temp_path, "wb") as buffer:
-        shutil.copyfileobj(file.file, buffer)
+    try:
+        with open(temp_path, "wb") as buffer:
+            shutil.copyfileobj(file.file, buffer)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to save uploaded file: {str(e)}")
     try:
         text_pages = extract_text_from_pdf(temp_path)
     except Exception as e:
-        os.remove(temp_path)
+        if os.path.exists(temp_path):
+            os.remove(temp_path)
         raise HTTPException(status_code=500, detail=f"PDF extraction failed: {str(e)}")
-    os.remove(temp_path)
+    if os.path.exists(temp_path):
+        os.remove(temp_path)
+    if not text_pages or all(not page.strip() for page in text_pages):
+        raise HTTPException(status_code=422, detail="No extractable text found in PDF.")
     return JSONResponse(content={"pages": text_pages})
