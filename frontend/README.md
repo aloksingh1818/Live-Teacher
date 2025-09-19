@@ -1,10 +1,22 @@
-# Frontend (Flutter)
+# Live-Teacher Frontend
 
+This is the React.js frontend for the Live-Teacher web application. Built with Vite and TypeScript.
 
 ## Structure
-- `lib/main.dart`: App entry point and navigation
-- `lib/screens/upload_pdf_screen.dart`: Upload PDF and view extraction result
+- `src/components/`: Reusable UI components
+- `src/pages/`: Top-level pages (routes)
+- `src/services/`: API and service logic
+- `src/hooks/`: Custom React hooks
+- `src/utils/`: Utility functions
+- `src/assets/`: Static assets (images, fonts, etc.)
+- `src/tests/`: Test files
 
-## PDF Upload UI
-- The `/upload` route opens the PDF upload screen.
-- Select a PDF file and upload to see extracted text from the backend.
+## Getting Started
+1. Install dependencies: `npm install`
+2. Start dev server: `npm run dev`
+
+## Routing
+Uses React Router for navigation.
+
+## Authentication
+Placeholder pages for Login and Signup are included.
