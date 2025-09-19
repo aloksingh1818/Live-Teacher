@@ -1,67 +1,60 @@
-# Day 4: Define Backend API Endpoints (Including Authentication)
+# Live-Teacher Backend API Endpoints (MVP)
 
-This document lists the planned REST API endpoints for the Live-Teacher backend (FastAPI), including authentication, PDF handling, TTS, and user progress. Each endpoint includes a description, method, route, request/response structure, and authentication requirements.
-
----
-
-## 1. Authentication Endpoints
-
-| Method | Route           | Description                | Auth Required | Request Body / Params         | Response                |
-|--------|-----------------|---------------------------|--------------|-------------------------------|-------------------------|
-| POST   | /auth/signup    | Register new user         | No           | email, password               | user info, token        |
-| POST   | /auth/login     | User login                | No           | email, password               | user info, token        |
-| POST   | /auth/logout    | Logout user (invalidate)  | Yes          | token                         | success/fail            |
-| GET    | /auth/me        | Get current user info     | Yes          | token (header)                | user info               |
+This document defines the core REST API endpoints for the Live-Teacher backend (FastAPI), including authentication, PDF upload, text extraction, TTS, and progress tracking.
 
 ---
 
-## 2. PDF Handling Endpoints
+## 1. Authentication (Firebase Auth)
+- **/auth/login** (POST): User login (handled on frontend, backend validates token)
+- **/auth/signup** (POST): User signup (handled on frontend, backend validates token)
+- **/auth/verify** (POST): Verify Firebase ID token, return user info
 
-| Method | Route           | Description                | Auth Required | Request Body / Params         | Response                |
-|--------|-----------------|---------------------------|--------------|-------------------------------|-------------------------|
-| POST   | /pdf/upload     | Upload PDF for processing  | Yes          | file (PDF)                    | pdf_id, meta            |
-| GET    | /pdf/{pdf_id}   | Get PDF metadata/status    | Yes          | pdf_id                        | meta, status            |
-| DELETE | /pdf/{pdf_id}   | Delete uploaded PDF        | Yes          | pdf_id                        | success/fail            |
+## 2. PDF Upload & Management
+- **/pdf/upload** (POST): Upload a PDF file
+  - Request: multipart/form-data (file)
+  - Response: PDF ID, metadata
+- **/pdf/{pdf_id}/extract** (GET): Extract text from a PDF (after upload)
+  - Request: PDF ID
+  - Response: Extracted text (by page/line)
 
----
+## 3. Text-to-Speech (TTS)
+- **/tts/speak** (POST): Generate TTS audio for given text
+  - Request: { text, language, voice, speed, pitch }
+  - Response: Audio file/stream URL
 
-## 3. Text Extraction & TTS Endpoints
+## 4. Progress Tracking
+- **/progress/save** (POST): Save user reading progress
+  - Request: { pdf_id, page, line, percent }
+  - Response: Success
+- **/progress/get** (GET): Get user progress for a PDF
+  - Request: { pdf_id }
+  - Response: { page, line, percent }
 
-| Method | Route                   | Description                        | Auth Required | Request Body / Params         | Response                |
-|--------|-------------------------|-------------------------------------|--------------|-------------------------------|-------------------------|
-| GET    | /pdf/{pdf_id}/text      | Get extracted text (by page/line)   | Yes          | pdf_id, page/line             | text                    |
-| POST   | /tts/generate           | Generate TTS audio for text         | Yes          | text, language, speed, voice  | audio file/stream       |
-
----
-
-## 4. User Progress & Bookmarks
-
-| Method | Route                   | Description                        | Auth Required | Request Body / Params         | Response                |
-|--------|-------------------------|-------------------------------------|--------------|-------------------------------|-------------------------|
-| POST   | /progress/save          | Save user progress                  | Yes          | pdf_id, page, line, percent   | success/fail            |
-| GET    | /progress/{pdf_id}      | Get user progress for a PDF         | Yes          | pdf_id                        | progress info           |
-
----
-
-## 5. (Future) AI/Advanced Features
-
-| Method | Route                   | Description                        | Auth Required | Request Body / Params         | Response                |
-|--------|-------------------------|-------------------------------------|--------------|-------------------------------|-------------------------|
-| POST   | /ai/explain             | Get AI explanation for text         | Yes          | text, difficulty              | explanation             |
-| POST   | /ai/quiz                | Generate quiz from content          | Yes          | pdf_id, page/chapter          | quiz questions          |
-| POST   | /ai/qa                  | Ask question, get answer            | Yes          | pdf_id, question              | answer                  |
+## 5. Teaching Mode (Basic Explanation)
+- **/teach/explain** (POST): Get explanation for a line/section
+  - Request: { text, difficulty }
+  - Response: Explanation text
 
 ---
 
 ## Notes
-- All endpoints use JWT or Firebase Auth tokens for authentication (except signup/login).
-- File uploads use multipart/form-data.
-- Error responses follow a standard format: `{ "error": "message" }`
-- Endpoints can be expanded as features grow (see advanced/future section).
+- All endpoints require authentication (Firebase ID token in header)
+- File uploads and TTS responses may use presigned URLs or direct streaming
+- Advanced endpoints (summaries, quizzes, Q&A) are out of MVP scope
+
+---
+
+## Example Request Flow
+1. User logs in (frontend gets Firebase token)
+2. User uploads PDF (/pdf/upload)
+3. Backend extracts text (/pdf/{pdf_id}/extract)
+4. User requests TTS for a section (/tts/speak)
+5. User saves progress (/progress/save)
+6. User requests explanation (/teach/explain)
 
 ---
 
 ## Next Steps
-- Define frontend component structure (Day 5)
-- Set up initial backend project structure (Day 8)
-- Document API contracts and data models
+- Implement these endpoints in FastAPI
+- Define data models and validation
+- Integrate with Firebase and TTS providers

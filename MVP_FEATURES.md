@@ -5,14 +5,14 @@ This document lists all must-have features for the Minimum Viable Product (MVP),
 
 ---
 
-## 🟢 MVP Feature List (Core Foundation)
+## 🟢 MVP Feature List (Core Foundation, Web App)
 
 | Feature                        | Description                                                      | Acceptance Criteria                                      | Notes                |
 |------------------------------- |------------------------------------------------------------------|----------------------------------------------------------|----------------------|
-| **User Signup & Login**        | Secure account creation and login for users                      | Users can sign up, log in, log out; sessions managed     | Firebase Auth        |
-| **PDF Upload**                 | User can upload book/notes PDF                                   | Uploads PDF successfully; supports common formats        | Local upload only    |
+| **User Signup & Login**        | Secure account creation and login for users (web)                | Users can sign up, log in, log out; sessions managed     | Firebase Auth        |
+| **PDF Upload**                 | User can upload book/notes PDF via web UI                        | Uploads PDF successfully; supports common formats        | Local upload only    |
 | **PDF Text Extraction**        | Extract text from uploaded PDF (with OCR if scanned)             | Extracts text from all pages; handles scanned PDFs       | Use PyMuPDF/pdfminer |
-| **Page-by-Page Reading**       | Read PDF line by line, page by page                              | User can navigate pages; text displayed clearly          |                      |
+| **Page-by-Page Reading**       | Read PDF line by line, page by page in browser                   | User can navigate pages; text displayed clearly          |                      |
 | **Text-to-Speech (TTS)**       | Natural voice reading in English, Hindi, Hinglish                | TTS reads selected text/page; user can play/pause        | Google/Amazon Polly  |
 | **Adjustable Speed & Tone**    | User can adjust TTS speed and tone                               | Speed/tone controls work and update TTS in real time     |                      |
 | **Teaching Mode**              | Reads each line and explains in detail (simple/medium/advanced)  | User selects difficulty; receives detailed explanations  | Basic explanations   |
@@ -59,7 +59,7 @@ This document lists all must-have features for the Minimum Viable Product (MVP),
 ---
 
 ## Assumptions & Constraints
-- MVP is mobile-first (Flutter), backend in Python (FastAPI)
+- MVP is web-first (React.js), backend in Python (FastAPI)
 - Only local PDF upload and storage for MVP
 - TTS uses third-party APIs (Google/Amazon)
 - OCR for scanned PDFs is basic, not advanced handwriting

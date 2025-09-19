@@ -1,7 +1,10 @@
 fastapi
 uvicorn
-python-multipart
-PyMuPDF
-firebase-admin
-httpx
+python-dotenv
 pydantic
+firebase-admin
+PyMuPDF
+pdfminer.six
+google-cloud-texttospeech
+pytest
+flake8

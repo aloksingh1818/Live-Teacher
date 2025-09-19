@@ -5,8 +5,8 @@ This document summarizes the research and selection process for the technology s
 ---
 
 ## 1. Frontend
-- **Framework:** Flutter (cross-platform for Android/iOS, web support possible)
-- **Rationale:** Fast development, single codebase, strong community, easy UI, ideal for MVP and scaling
+- **Framework:** React.js (web application)
+- **Rationale:** Modern, component-based, large ecosystem, ideal for responsive web apps, fast development, strong community
 
 ## 2. Backend
 - **Framework:** Python (FastAPI)
@@ -35,7 +35,7 @@ This document summarizes the research and selection process for the technology s
 ## Summary Table
 | Component         | Selected Tech           | Reasoning/Notes                       |
 |-------------------|------------------------|---------------------------------------|
-| Frontend          | Flutter                | Cross-platform, fast dev              |
+| Frontend          | React.js                | Modern web app, fast dev, responsive  |
 | Backend           | FastAPI (Python)       | Async, modern, AI/ML friendly         |
 | Database/Auth     | Firebase Firestore/Auth| Real-time, easy, scalable, secure     |
 | Hosting           | Firebase Hosting       | Easy deploy, integrates with Firebase |
@@ -50,3 +50,4 @@ This document summarizes the research and selection process for the technology s
 - Document architecture and integration points
 - Begin system architecture design (Day 3)
 - Set up initial project structure and repos
+- Scaffold React.js frontend project structure
