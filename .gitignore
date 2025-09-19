@@ -1,3 +1,5 @@
+# Ignore large Flutter SDK archive
+backend/flutter_linux_3.22.1-stable.tar.xz
 # Python
 __pycache__/
 *.pyc
